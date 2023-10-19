@@ -2,6 +2,6 @@ package app.dao;
 
 public class ImpoBoardDao {
 	
-	// 테스트입니다. 안녕하세요
-	
+	// �뀒�뒪�듃�엯�땲�떎. �븞�뀞�븯�꽭�슂
+	///sadsadad
 }
