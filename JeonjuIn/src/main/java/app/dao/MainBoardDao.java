@@ -12,20 +12,20 @@ import app.domain.MainBoardVo;
 import app.domain.MemberVo;
 import app.domain.SearchCriteria;
 
-//DB board0803�� �����ؼ� �����͸� �����´�
+//DB board0803占쏙옙 占쏙옙占쏙옙占쌔쇽옙 占쏙옙占쏙옙占싶몌옙 占쏙옙占쏙옙占승댐옙
 public class MainBoardDao {
 
-	//private Connection conn;  //��������� �����ص� �ڵ��ʱ�ȭ��
+	//private Connection conn;  //占쏙옙占쏙옙占쏙옙占쏙옙占� 占쏙옙占쏙옙占쌔듸옙 占쌘듸옙占십깍옙화占쏙옙
 	//private PreparedStatement pstmt;
 	
-	//�����ڸ� �����
-	public MainBoardDao() {
-		DbConn dbconn = new DbConn();
-		this.conn = dbconn.getConnection();
+	//占쏙옙占쏙옙占쌘몌옙 占쏙옙占쏙옙占�
+	//public MainBoardDao() {
+		//DbConn dbconn = new DbConn();
+		//this.conn = dbconn.getConnection();
 	}
 	
 	public ArrayList<MainBoardVo>  boardSelectAll(SearchCriteria scri){
-		//���ѹ迭Ŭ���� ��ü�����ؼ� �����͸� ���� �غ� �Ѵ�
+		//占쏙옙占싼배열클占쏙옙占쏙옙 占쏙옙체占쏙옙占쏙옙占쌔쇽옙 占쏙옙占쏙옙占싶몌옙 占쏙옙占쏙옙 占쌔븝옙 占싼댐옙
 		ArrayList<MainBoardVo> alist =new ArrayList<MainBoardVo>();
 		ResultSet rs = null;
 		
@@ -40,22 +40,22 @@ public class MainBoardDao {
 				+ str
 				+ "order by originbidx DESC,depth limit ?,?";
 		try{
-			//1.â��(�÷���)�� �����
-			//2.������ �����ؼ� �����͸� ���밴ü�� ��ƿ´� 
-			//3.���밴ü�� �ִ� �����͸� ȸ����ü(MemberVo)�� �Űܴ�´� 
-			//4.ȸ����ü�� â�� ����ִ´�	
+			//1.창占쏙옙(占시뤄옙占쏙옙)占쏙옙 占쏙옙占쏙옙占�
+			//2.占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌔쇽옙 占쏙옙占쏙옙占싶몌옙 占쏙옙占쎈객체占쏙옙 占쏙옙틸쨈占� 
+			//3.占쏙옙占쎈객체占쏙옙 占쌍댐옙 占쏙옙占쏙옙占싶몌옙 회占쏙옙占쏙옙체(MemberVo)占쏙옙 占신겨댐옙쨈占� 
+			//4.회占쏙옙占쏙옙체占쏙옙 창占쏙옙 占쏙옙占쏙옙獵쨈占�	
 			
-			//����(����)��ü
+			//占쏙옙占쏙옙(占쏙옙占쏙옙)占쏙옙체
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,(scri.getPage()-1)*scri.getPerPageNum());
 			pstmt.setInt(2,scri.getPerPageNum());
 			
-			//DB�� �ִ� ���� ��ƿ��� ���밴ü
+			//DB占쏙옙 占쌍댐옙 占쏙옙占쏙옙 占쏙옙틸占쏙옙占� 占쏙옙占쎈객체
 			rs = pstmt.executeQuery();
-			//rs.next()�� �������� �ִ��� Ȯ���ϴ� �޼ҵ� ������true
+			//rs.next()占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쌍댐옙占쏙옙 확占쏙옙占싹댐옙 占쌨소듸옙 占쏙옙占쏙옙占쏙옙true
 			while(rs.next()){
 				BoardVo bv = new BoardVo();
-				//rs���� midx�� ������ mv�� �Űܴ�´�
+				//rs占쏙옙占쏙옙 midx占쏙옙 占쏙옙占쏙옙占쏙옙 mv占쏙옙 占신겨댐옙쨈占�
 				bv.setBidx( rs.getInt("Bidx") ); 
 				bv.setSubject( rs.getString("Subject") );
 				bv.setWriter( rs.getString("Writer"));
@@ -117,7 +117,7 @@ public class MainBoardDao {
 	}
 	
 	public int boardTotalCount(SearchCriteria scri){
-		int value=0;  // ������� 0���� �ƴ���
+		int value=0;  // 占쏙옙占쏙옙占쏙옙占� 0占쏙옙占쏙옙 占싣댐옙占쏙옙
 		
 		String str="";
 		if(!scri.getKeyword().equals("")) {
@@ -154,14 +154,14 @@ public class MainBoardDao {
 		String sql="select * from board0803 where bidx=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//���� ���� Ŭ�������� ������
+		//占쏙옙占쏙옙 占쏙옙占쏙옙 클占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bidx);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				//bv�����ϰ� ����� �Űܴ��
+				//bv占쏙옙占쏙옙占싹곤옙 占쏙옙占쏙옙占� 占신겨댐옙占�
 				bv = new BoardVo();
 				bv.setSubject(rs.getString("subject"));
 				bv.setContents(rs.getString("contents"));
@@ -233,7 +233,7 @@ public class MainBoardDao {
 		pstmt.setString(6,bv.getPwd());
 		
 		exec = pstmt.executeUpdate();
-		//������ �Ǹ� 1�� ����
+		//占쏙옙占쏙옙占쏙옙 占실몌옙 1占쏙옙 占쏙옙占쏙옙
 		}catch(Exception e){
 			e.printStackTrace();
 		}	
@@ -270,7 +270,7 @@ public class MainBoardDao {
 				+ "VALUES(?,?,?,?,?,?,?,?)";
 		
 		try{
-		conn.setAutoCommit(false);		//����Ŀ��
+		conn.setAutoCommit(false);		//占쏙옙占쏙옙커占쏙옙
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, bv.getDepth());
 		pstmt.executeUpdate();
