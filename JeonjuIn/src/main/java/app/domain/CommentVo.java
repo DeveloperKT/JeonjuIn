@@ -1,7 +1,7 @@
 package app.domain;
 
 public class CommentVo {
-	
+	//
 	private int cidx;
 	private String ccontents;
 	private String cwriteday;
