@@ -21,7 +21,7 @@ public class MainBoardDao {
 	//占쏙옙占쏙옙占쌘몌옙 占쏙옙占쏙옙占�
 	//public MainBoardDao() {
 		//DbConn dbconn = new DbConn();
-		this.conn = dbconn.getConnection();
+		//this.conn = dbconn.getConnection();
 	}
 	
 	public ArrayList<MainBoardVo>  boardSelectAll(SearchCriteria scri){
