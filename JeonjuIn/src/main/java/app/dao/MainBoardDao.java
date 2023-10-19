@@ -1,5 +1,5 @@
 package app.dao;
-
+// hiu
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,20 +12,20 @@ import app.domain.MainBoardVo;
 import app.domain.MemberVo;
 import app.domain.SearchCriteria;
 
-//DB board0803¿¡ Á¢±ÙÇØ¼­ µ¥ÀÌÅÍ¸¦ °¡Á®¿Â´Ù
+//DB board0803ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
 public class MainBoardDao {
 
-	//private Connection conn;  //¸â¹öº¯¼ö´Â ¼±¾ð¸¸ÇØµµ ÀÚµ¿ÃÊ±âÈ­µÊ
+	//private Connection conn;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½Úµï¿½ï¿½Ê±ï¿½È­ï¿½ï¿½
 	//private PreparedStatement pstmt;
 	
-	//»ý¼ºÀÚ¸¦ ¸¸µç´Ù
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 	public MainBoardDao() {
 		DbConn dbconn = new DbConn();
 		this.conn = dbconn.getConnection();
 	}
 	
 	public ArrayList<MainBoardVo>  boardSelectAll(SearchCriteria scri){
-		//¹«ÇÑ¹è¿­Å¬·¡½º °´Ã¼»ý¼ºÇØ¼­ µ¥ÀÌÅÍ¸¦ ´ãÀ» ÁØºñ¸¦ ÇÑ´Ù
+		//ï¿½ï¿½ï¿½Ñ¹è¿­Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ ï¿½Ñ´ï¿½
 		ArrayList<MainBoardVo> alist =new ArrayList<MainBoardVo>();
 		ResultSet rs = null;
 		
@@ -40,22 +40,22 @@ public class MainBoardDao {
 				+ str
 				+ "order by originbidx DESC,depth limit ?,?";
 		try{
-			//1.Ã¢°í(ÄÃ·º¼Ç)¸¦ ¸¸µç´Ù
-			//2.Äõ¸®¸¦ ½ÇÇàÇØ¼­ µ¥ÀÌÅÍ¸¦ Àü¿ë°´Ã¼¿¡ ´ã¾Æ¿Â´Ù 
-			//3.Àü¿ë°´Ã¼¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ È¸¿ø°´Ã¼(MemberVo)¿¡ ¿Å°Ü´ã´Â´Ù 
-			//4.È¸¿ø°´Ã¼¸¦ Ã¢°í¿¡ Áý¾î³Ö´Â´Ù	
+			//1.Ã¢ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			//2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ë°´Ã¼ï¿½ï¿½ ï¿½ï¿½Æ¿Â´ï¿½ 
+			//3.ï¿½ï¿½ï¿½ë°´Ã¼ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ È¸ï¿½ï¿½ï¿½ï¿½Ã¼(MemberVo)ï¿½ï¿½ ï¿½Å°Ü´ï¿½Â´ï¿½ 
+			//4.È¸ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´Â´ï¿½	
 			
-			//±¸¹®(Äõ¸®)°´Ã¼
+			//ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½Ã¼
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,(scri.getPage()-1)*scri.getPerPageNum());
 			pstmt.setInt(2,scri.getPerPageNum());
 			
-			//DB¿¡ ÀÖ´Â °ªÀ» ´ã¾Æ¿À´Â Àü¿ë°´Ã¼
+			//DBï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°´Ã¼
 			rs = pstmt.executeQuery();
-			//rs.next()´Â ´ÙÀ½°ªÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¸Þ¼Òµå ÀÖÀ¸¸étrue
+			//rs.next()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½true
 			while(rs.next()){
 				BoardVo bv = new BoardVo();
-				//rs¿¡¼­ midx°ª ²¨³»¼­ mv¿¡ ¿Å°Ü´ã´Â´Ù
+				//rsï¿½ï¿½ï¿½ï¿½ midxï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mvï¿½ï¿½ ï¿½Å°Ü´ï¿½Â´ï¿½
 				bv.setBidx( rs.getInt("Bidx") ); 
 				bv.setSubject( rs.getString("Subject") );
 				bv.setWriter( rs.getString("Writer"));
@@ -117,7 +117,7 @@ public class MainBoardDao {
 	}
 	
 	public int boardTotalCount(SearchCriteria scri){
-		int value=0;  // °á°ú°ªÀÌ 0ÀÎÁö ¾Æ´ÑÁö
+		int value=0;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½
 		
 		String str="";
 		if(!scri.getKeyword().equals("")) {
@@ -154,14 +154,14 @@ public class MainBoardDao {
 		String sql="select * from board0803 where bidx=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//Çâ»óµÈ ±¸¹® Å¬·¡½º½º¸¦ ²¨³½´Ù
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bidx);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				//bv»ý¼ºÇÏ°í °á°ú°ª ¿Å°Ü´ã±â
+				//bvï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å°Ü´ï¿½ï¿½
 				bv = new BoardVo();
 				bv.setSubject(rs.getString("subject"));
 				bv.setContents(rs.getString("contents"));
@@ -233,7 +233,7 @@ public class MainBoardDao {
 		pstmt.setString(6,bv.getPwd());
 		
 		exec = pstmt.executeUpdate();
-		//¼öÁ¤ÀÌ µÇ¸é 1ÀÌ ¸®ÅÏ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}catch(Exception e){
 			e.printStackTrace();
 		}	
@@ -270,7 +270,7 @@ public class MainBoardDao {
 				+ "VALUES(?,?,?,?,?,?,?,?)";
 		
 		try{
-		conn.setAutoCommit(false);		//¼öµ¿Ä¿¹Ô
+		conn.setAutoCommit(false);		//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, bv.getDepth());
 		pstmt.executeUpdate();
