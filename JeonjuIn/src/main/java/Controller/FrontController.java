@@ -30,7 +30,7 @@ public class FrontController extends HttpServlet {
 		
 		if (str.equals("board")) {
 			NoticeBoardController mc = new NoticeBoardController(location);
-			mc.doGet(request, response);
+			//mc.doGet(request, response);
 			
 		}
 		
